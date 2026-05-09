@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我的女王殿下</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --princess-pink: #fce4ec;
+            --royal-gold: #d4af37;
+            --magic-white: #ffffff;
+            --fairytale-rose: #ff85a1;
+        }
+
+        body {
+            background: var(--princess-pink);
+            /* 添加梦幻渐变和星光感背景 */
+            background-image: radial-gradient(#fff 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #5d4037;
+            font-family: 'Noto Serif SC', serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        /* 顶部华丽装饰 */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3.5rem;
+            color: var(--dark-pink);
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(212, 175, 55, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .tiara {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px gold);
+        }
+
+        /* 欧式壁画相框设计 */
+        .mural-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .mural-frame {
+            position: relative;
+            background: #fff;
+            padding: 15px;
+            border: 12px solid #fff;
+            /* 金色雕花边框效果 */
+            outline: 2px solid var(--royal-gold);
+            outline-offset: -8px;
+            box-shadow: 
+                0 0 0 4px #fff,
+                0 0 0 6px var(--royal-gold),
+                0 15px 30px rgba(0,0,0,0.2);
+            max-width: 90%;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mural-frame::before {
+            content: "✿";
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--princess-pink);
+            color: var(--royal-gold);
+            font-size: 1.5rem;
+            padding: 0 10px;
+        }
+
+        .mural-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 让图片带有一点油画质感 */
+            filter: sepia(10%) contrast(1.1);
+        }
+
+        .mural-caption {
+            margin-top: 15px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.4rem;
+            color: var(--royal-gold);
+            text-align: center;
+        }
+
+        /* 童话文字区域 */
+        .story-text {
+            background: rgba(255, 255, 255, 0.7);
+            margin: 30px 20px;
+            padding: 30px;
+            border-radius: 50% 50% 50% 50% / 10% 10% 10% 10%; /* 弧形边缘 */
+            border: 1px solid var(--royal-gold);
+            line-height: 2;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--royal-gold);
+            letter-spacing: 2px;
+        }
+
+        /* 魔法星光闪烁动画 */
+        @keyframes sparkle {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .magic-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="tiara">👑</div>
+        <h1>女王殿下</h1>
+        <p>在这个童话的世界里，你永远是主角</p>
+    </header>
+
+    <div class="mural-container">
+        <div class="mural-frame">
+            <img src="mom-01.jpg" alt="妈妈的照片">
+            <div class="mural-caption">永恒的优雅</div>
+        </div>
+
+        <section class="story-text">
+            在很久很久以前，<br>
+            有一位温柔的仙女来到了我的身边。<br>
+            她没有魔法棒，却用双手织出了最温暖的家。<br>
+            亲爱的妈妈，节日快乐。
+        </section>
+
+        <div class="mural-frame">
+            <img src="mom-02.jpg" alt="妈妈的照片">
+            <div class="mural-caption">时光里的温柔</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>✦ 公主殿下的私人画廊 ✦</p>
+    </footer>
+
+</body>
+</html>
