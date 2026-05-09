@@ -25,7 +25,7 @@
             scroll-behavior: smooth;
         }
 
-        /* 音乐控制 */
+        /* 音乐播放控制 */
         #music-btn {
             position: fixed;
             top: 20px;
@@ -42,33 +42,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* 封面页布局 */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .title-group h1 {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 2.4rem;
-            color: var(--deep-rose);
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 0px white;
-        }
-
-        .title-group p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--soft-brown);
-            margin-bottom: 30px;
-        }
-
-        /* 滑动相框组件 */
+        /* 统一的巴洛克相框 */
         .mural-wrapper {
             width: 100%;
             max-width: 320px;
@@ -80,7 +54,6 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
-        /* 装饰角标 */
         .mural-wrapper::before {
             content: "❦";
             position: absolute;
@@ -93,56 +66,65 @@
             font-size: 1.5rem;
         }
 
+        /* 滑动相册 */
         .slider-container {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             gap: 10px;
-            -webkit-overflow-scrolling: touch;
         }
-
         .slider-container::-webkit-scrollbar { display: none; }
-
         .slider-container img {
             flex: 0 0 100%;
             width: 100%;
-            height: 400px; /* 固定高度保持整齐 */
+            height: 400px;
             object-fit: cover;
             scroll-snap-align: start;
-            border: 1px solid #eee;
         }
 
-        /* 提示滑动的小点 */
-        .scroll-hint {
-            font-size: 0.7rem;
-            color: var(--royal-gold);
-            margin-top: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* 内容页布局 */
-        .content-row {
-            min-height: 100vh;
-            padding: 60px 20px;
+        /* 封面 */
+        .hero-section {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.2rem;
+            color: var(--deep-rose);
+            margin-bottom: 10px;
+        }
+
+        .cover-text { font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
+
+        /* 内容行 */
+        .content-row {
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
 
         .text-card {
-            font-size: 1.15rem;
-            line-height: 2;
+            font-size: 1.1rem;
+            line-height: 1.8;
             text-align: center;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 20px;
             max-width: 300px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 15px;
         }
+
+        /* 视频位 */
+        .video-section { padding: 60px 20px; text-align: center; }
+        .video-box { width: 100%; aspect-ratio: 16/9; background: #000; display: block; }
 
         /* 页脚 */
         .final-footer {
@@ -151,19 +133,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: linear-gradient(to bottom, transparent, white);
-        }
-
-        .final-title {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 3rem;
-            color: var(--deep-rose);
-            margin-bottom: 20px;
         }
 
         /* 固定签名 */
-        .persistent-sig {
+        .fixed-sig {
             position: fixed;
             bottom: 15px;
             width: 100%;
@@ -172,18 +145,12 @@
             font-size: 1.3rem;
             color: var(--deep-rose);
             z-index: 1000;
-            text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
             pointer-events: none;
+            text-shadow: 1px 1px 2px white;
         }
 
-        /* 动画 */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .vines { animation: float 3s ease-in-out infinite; color: var(--royal-gold); font-size: 1.5rem; }
-
+        .hint { font-size: 0.7rem; color: var(--royal-gold); margin-top: 8px; letter-spacing: 1px; }
+        .vines { color: var(--royal-gold); font-size: 1.5rem; margin: 15px 0; }
     </style>
 </head>
 <body>
@@ -196,27 +163,21 @@
     </audio>
 
     <section class="hero-section">
-        <div class="title-group">
-            <h1>尊敬的杜晓瑶女王殿下</h1>
-            <p>全世界最好的女孩，<br>母亲节快乐</p>
-        </div>
+        <div class="vines">✨</div>
+        <h1>尊敬的杜晓瑶女王殿下</h1>
+        <p class="cover-text">全世界最好的女孩，<br>母亲节快乐</p>
         <div class="mural-wrapper">
-            <div class="slider-container">
-                <img src="p1-1.jpg"> <img src="p1-2.jpg"> <img src="p1-3.jpg">
-                <img src="p1-4.jpg"> <img src="p1-5.jpg"> <img src="p1-6.jpg">
-            </div>
-            <div class="scroll-hint">滑动查看更多 ⟷</div>
+            <img src="p1.jpg" style="width:100%; height:380px; object-fit:cover;">
         </div>
-        <div class="vines" style="margin-top: 40px;">❧</div>
+        <div class="vines">❧</div>
     </section>
 
     <section class="content-row">
         <div class="mural-wrapper">
             <div class="slider-container">
-                <img src="p2-1.jpg"> <img src="p2-2.jpg"> <img src="p2-3.jpg">
-                <img src="p2-4.jpg"> <img src="p2-5.jpg"> <img src="p2-6.jpg">
+                <img src="p2.jpg"> <img src="p3.jpg">
             </div>
-            <div class="scroll-hint">记忆长廊 ⟷</div>
+            <p class="hint">左右滑动 ⟷</p>
         </div>
         <div class="text-card">
             因为有你，我在这个世界上得到了第一份，也是最好的一份爱。
@@ -229,20 +190,35 @@
         </div>
         <div class="mural-wrapper">
             <div class="slider-container">
-                <img src="p3-1.jpg"> <img src="p3-2.jpg"> <img src="p3-3.jpg">
-                <img src="p3-4.jpg"> <img src="p3-5.jpg"> <img src="p3-6.jpg">
+                <img src="p4.jpg"> <img src="p5.jpg">
             </div>
-            <div class="scroll-hint">永恒时刻 ⟷</div>
+            <p class="hint">左右滑动 ⟷</p>
+        </div>
+    </section>
+
+    <section class="content-row">
+        <div class="mural-wrapper">
+            <img src="p6.jpg" style="width:100%; height:380px; object-fit:cover;">
+        </div>
+        <p style="color:var(--royal-gold); font-style:italic;">时光漫步，爱在身边</p>
+    </section>
+
+    <section class="video-section">
+        <div class="vines">✧ 珍贵影像 ✧</div>
+        <div class="mural-wrapper">
+            <video class="video-box" controls playsinline>
+                <source src="video.mp4" type="video/mp4">
+            </video>
         </div>
     </section>
 
     <section class="final-footer">
         <div class="vines">❦</div>
-        <h2 class="final-title">母亲节快乐</h2>
+        <h2 style="font-family:'Ma Shan Zheng'; font-size:3rem; color:var(--deep-rose);">母亲节快乐</h2>
         <div class="vines">❦</div>
     </section>
 
-    <div class="persistent-sig">
+    <div class="fixed-sig">
         From Beibei · 来自贝贝
     </div>
 
@@ -250,15 +226,9 @@
         const audio = document.getElementById('bg-music');
         const icon = document.getElementById('music-icon');
         let playing = false;
-
         function toggleMusic() {
-            if (playing) {
-                audio.pause();
-                icon.innerText = "♫";
-            } else {
-                audio.play();
-                icon.innerText = "❤";
-            }
+            if (playing) { audio.pause(); icon.innerText = "♫"; } 
+            else { audio.play(); icon.innerText = "❤"; }
             playing = !playing;
         }
     </script>
