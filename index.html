@@ -2,249 +2,265 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>致杜晓瑶女王殿下</title>
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Pinyon+Script&family=Noto+Serif+SC:wght@300;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --baroque-pink: #f8bbd0;
-            --rose-gold: #d4af37;
+            --baroque-pink: #fce4ec;
+            --royal-gold: #d4af37;
             --ivory: #fffafb;
             --deep-rose: #ad1457;
-            --elegant-brown: #5d4037;
+            --soft-brown: #6d4c41;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--baroque-pink);
-            /* 巴洛克风格背景：蕾丝纹理感 */
-            background-image: radial-gradient(var(--ivory) 0.5px, transparent 0.5px);
-            background-size: 30px 30px;
-            color: var(--elegant-brown);
+            background-image: radial-gradient(var(--ivory) 1px, transparent 1px);
+            background-size: 25px 25px;
+            color: var(--soft-brown);
             font-family: 'Noto Serif SC', serif;
-            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* 背景音乐按钮样式 */
-        #music-control {
+        /* 音乐控制 */
+        #music-btn {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--rose-gold);
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1.5px solid var(--royal-gold);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* 封面页 (First Section) */
-        .full-page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        h1 {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 2.2rem;
-            color: var(--deep-rose);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .cover-subtitle {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--elegant-brown);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        /* 巴洛克精致相框 */
-        .baroque-frame {
-            position: relative;
-            padding: 12px;
-            background: var(--ivory);
-            border: 2px solid var(--rose-gold);
-            box-shadow: 
-                0 0 0 4px var(--ivory),
-                0 0 0 6px var(--rose-gold),
-                0 20px 40px rgba(0,0,0,0.2);
-            max-width: 280px;
-            margin: 20px auto;
-        }
-
-        .baroque-frame::before, .baroque-frame::after {
-            content: "❧";
-            position: absolute;
-            font-size: 2rem;
-            color: var(--rose-gold);
-        }
-        .baroque-frame::before { top: -20px; left: -10px; transform: rotate(-45deg); }
-        .baroque-frame::after { bottom: -20px; right: -10px; transform: rotate(135deg); }
-
-        .baroque-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        /* 滑动后的图文布局 */
-        .content-section {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 25px;
-            gap: 30px;
-        }
-
-        .text-block {
-            font-size: 1.2rem;
-            line-height: 2;
-            color: var(--deep-rose);
-            font-family: 'Noto Serif SC', serif;
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 10px;
-        }
-
-        /* 尾页 */
-        .footer-section {
+        /* 封面页布局 */
+        .hero-section {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
         }
 
-        .final-wish {
+        .title-group h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.4rem;
+            color: var(--deep-rose);
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0px white;
+        }
+
+        .title-group p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--soft-brown);
+            margin-bottom: 30px;
+        }
+
+        /* 滑动相框组件 */
+        .mural-wrapper {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
+            padding: 12px;
+            background: var(--ivory);
+            border: 2.5px solid var(--royal-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        /* 装饰角标 */
+        .mural-wrapper::before {
+            content: "❦";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--baroque-pink);
+            padding: 0 10px;
+            color: var(--royal-gold);
+            font-size: 1.5rem;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+            gap: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slider-container::-webkit-scrollbar { display: none; }
+
+        .slider-container img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 400px; /* 固定高度保持整齐 */
+            object-fit: cover;
+            scroll-snap-align: start;
+            border: 1px solid #eee;
+        }
+
+        /* 提示滑动的小点 */
+        .scroll-hint {
+            font-size: 0.7rem;
+            color: var(--royal-gold);
+            margin-top: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 内容页布局 */
+        .content-row {
+            min-height: 100vh;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .text-card {
+            font-size: 1.15rem;
+            line-height: 2;
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            max-width: 300px;
+        }
+
+        /* 页脚 */
+        .final-footer {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, white);
+        }
+
+        .final-title {
             font-family: 'Ma Shan Zheng', cursive;
             font-size: 3rem;
             color: var(--deep-rose);
-            text-shadow: 2px 2px 0px #fff;
+            margin-bottom: 20px;
         }
 
-        /* 固定底部签名 */
-        .fixed-signature {
+        /* 固定签名 */
+        .persistent-sig {
             position: fixed;
-            bottom: 20px;
-            left: 0;
+            bottom: 15px;
             width: 100%;
             text-align: center;
             font-family: 'Pinyon Script', cursive;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--deep-rose);
-            z-index: 100;
+            z-index: 1000;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
             pointer-events: none;
-            text-shadow: 1px 1px 2px white;
         }
 
-        /* 装饰性藤蔓 */
-        .vines {
-            font-family: 'Pinyon Script', cursive;
-            color: var(--rose-gold);
-            font-size: 2rem;
-            margin: 20px 0;
+        /* 动画 */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
+        .vines { animation: float 3s ease-in-out infinite; color: var(--royal-gold); font-size: 1.5rem; }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .baroque-frame { max-width: 240px; }
-        }
     </style>
 </head>
 <body>
 
-    <div id="music-control" onclick="toggleMusic()">
+    <div id="music-btn" onclick="toggleMusic()">
         <span id="music-icon">♫</span>
     </div>
     <audio id="bg-music" loop>
         <source src="https://www.chosic.com/wp-content/uploads/2021/04/Chopin-Nocturne-op.9-No.2.mp3" type="audio/mpeg">
     </audio>
 
-    <section class="full-page">
-        <div class="vines">✨</div>
-        <h1>尊敬的杜晓瑶女王殿下</h1>
-        <p class="cover-subtitle">
-            全世界最好的女孩，<br>
-            母亲节快乐
-        </p>
-        <div class="baroque-frame">
-            <img src="photo1.jpg" alt="妈妈的照片1">
+    <section class="hero-section">
+        <div class="title-group">
+            <h1>尊敬的杜晓瑶女王殿下</h1>
+            <p>全世界最好的女孩，<br>母亲节快乐</p>
         </div>
-        <div class="vines" style="margin-top: 40px;">Scroll down</div>
+        <div class="mural-wrapper">
+            <div class="slider-container">
+                <img src="p1-1.jpg"> <img src="p1-2.jpg"> <img src="p1-3.jpg">
+                <img src="p1-4.jpg"> <img src="p1-5.jpg"> <img src="p1-6.jpg">
+            </div>
+            <div class="scroll-hint">滑动查看更多 ⟷</div>
+        </div>
+        <div class="vines" style="margin-top: 40px;">❧</div>
     </section>
 
-    <section class="content-section">
-        <div class="baroque-frame">
-            <img src="photo2.jpg" alt="妈妈的照片2">
+    <section class="content-row">
+        <div class="mural-wrapper">
+            <div class="slider-container">
+                <img src="p2-1.jpg"> <img src="p2-2.jpg"> <img src="p2-3.jpg">
+                <img src="p2-4.jpg"> <img src="p2-5.jpg"> <img src="p2-6.jpg">
+            </div>
+            <div class="scroll-hint">记忆长廊 ⟷</div>
         </div>
-        <div class="text-block">
+        <div class="text-card">
             因为有你，我在这个世界上得到了第一份，也是最好的一份爱。
         </div>
     </section>
 
-    <section class="content-section">
-        <div class="text-block">
+    <section class="content-row">
+        <div class="text-card">
             天然的纽带把我们紧紧绑在一起，我们将永远共享幸福的能量。
         </div>
-        <div class="baroque-frame">
-            <img src="photo3.jpg" alt="妈妈的照片3">
+        <div class="mural-wrapper">
+            <div class="slider-container">
+                <img src="p3-1.jpg"> <img src="p3-2.jpg"> <img src="p3-3.jpg">
+                <img src="p3-4.jpg"> <img src="p3-5.jpg"> <img src="p3-6.jpg">
+            </div>
+            <div class="scroll-hint">永恒时刻 ⟷</div>
         </div>
     </section>
 
-    <section class="footer-section">
+    <section class="final-footer">
         <div class="vines">❦</div>
-        <h2 class="final-wish">母亲节快乐</h2>
-        <p style="margin-top: 20px; color: var(--rose-gold);">Forever Your Girl/Boy</p>
+        <h2 class="final-title">母亲节快乐</h2>
+        <div class="vines">❦</div>
     </section>
 
-    <div class="fixed-signature">
+    <div class="persistent-sig">
         From Beibei · 来自贝贝
     </div>
 
     <script>
-        // 音乐播放控制逻辑
-        const music = document.getElementById('bg-music');
+        const audio = document.getElementById('bg-music');
         const icon = document.getElementById('music-icon');
-        let isPlaying = false;
+        let playing = false;
 
         function toggleMusic() {
-            if (isPlaying) {
-                music.pause();
+            if (playing) {
+                audio.pause();
                 icon.innerText = "♫";
             } else {
-                music.play();
+                audio.play();
                 icon.innerText = "❤";
             }
-            isPlaying = !isPlaying;
+            playing = !playing;
         }
-
-        // 自动播放提示：现代浏览器需要用户交互后才能播放音频
-        window.addEventListener('click', () => {
-            if(!isPlaying) {
-                // 如果你希望用户第一次点击页面任何地方就自动播放，可以取消下面注释
-                // toggleMusic();
-            }
-        }, {once: true});
     </script>
 </body>
 </html>
